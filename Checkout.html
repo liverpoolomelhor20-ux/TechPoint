@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<h1 class="titulo-checkout">Finalizar Compra</h1>
+
+
+<!-- FORMULÁRIO -->
+<section class="checkout-box">
+    <h3>Seus Dados</h3>
+
+    <form id="form-checkout" class="form-checkout">
+
+        <div class="form-group">
+            <label>Nome completo</label>
+            <input type="text" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Data de nascimento</label>
+                <input type="date" required>
+            </div>
+
+            <div class="form-group">
+                <label>CPF</label>
+                <input type="text" placeholder="000.000.000-00" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Telefone</label>
+            <input type="text" placeholder="(00) 90000-0000" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>CEP (opcional)</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Estado</label>
+                <input type="text" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Cidade</label>
+            <input type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label>Bairro</label>
+            <input type="text" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Rua</label>
+                <input type="text" required>
+            </div>
+
+            <div class="form-group small">
+                <label>Número</label>
+                <input type="text" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Complemento (opcional)</label>
+            <input type="text">
+        </div>
+
+        <!-- NOVA PARTE: MÉTODO DE PAGAMENTO -->
+        <div class="form-group">
+            <label>Método de pagamento</label>
+            <select required>
+                <option disabled selected>Selecione</option>
+                <option>Cartão de Crédito</option>
+                <option>PIX</option>
+                <option>Boleto Bancário</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn-comprar">Confirmar pedido</button>
+    </form>
+</section>
+
+<script src="js/carrinho.js"></script>
+<script src="js/checkout.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+

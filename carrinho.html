@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - TechPoint</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header>
+    <figure>
+        <img src="logo.jpg" alt="Logo TechPoint">
+        <figcaption>Logo TechPoint</figcaption>
+    </figure>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Início</a></li>
+            <li><a href="produto.html">Produtos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="sobre.html">Sobre nós</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="carrinho-container">
+    <h1>Seu Carrinho</h1>
+
+    <ul id="lista-carrinho"></ul>
+
+    <h2>Total: R$ <span id="total-carrinho">0.00</span></h2>
+
+    <div class="botoes-carrinho">
+        <button id="limpar-carrinho">Limpar carrinho</button>
+        <button onclick="history.back()">Voltar</button>
+        <button class="btn-finalizar" onclick="window.location.href='checkout.html'">Finalizar Compra</button>
+    </div>
+</section>
+
+<script src="carrinho.js"></script>

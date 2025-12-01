@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <header>
+        <div>
+            <figure>
+                <img src="logo.jpg" alt="Logo TechPoint">
+                <figcaption>logo TechPoint</figcaption>
+            </figure>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="home.html">Inicio</a></li>
+                <li><a href="produto.html">Voltar aos produtos</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="sobre.html">Sobre nós</a></li>
+                <li>
+                    <a href="carrinho.html" class="icon-carrinho">
+                        🛒 <span id="quantidade-carrinho">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="pagina-detalhes">
+        <div class="detalhes-container">
+
+            <div class="detalhes-imagem">
+                <img id="imagem-produto" alt="">
+            </div>
+
+            <div class="detalhes-info">
+                <h1 id="nome-produto"></h1>
+                <span class="preco" id="preco-produto"></span>
+
+                <p id="descricao-produto"></p>
+
+                <h3>Características Técnicas</h3>
+                <ul id="caracteristicas-produto"></ul>
+
+                <a class="botao-comprar" href="">Comprar Agora</a>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="produtos.js"></script>
+
+    <!-- ---- CARREGAR PRODUTO ---- -->
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const produtoID = params.get('id');
+        const produtoSelecionado = produtos[produtoID];
+
+        if(produtoSelecionado){
+            document.getElementById('nome-produto').textContent = produtoSelecionado.nome;
+            document.getElementById('preco-produto').textContent = produtoSelecionado.preco;
+            document.getElementById('descricao-produto').textContent = produtoSelecionado.descricao;
+            document.getElementById('imagem-produto').src = produtoSelecionado.imagem;
+            document.getElementById('imagem-produto').alt = produtoSelecionado.nome;
+
+            const lista = document.getElementById("caracteristicas-produto");
+            lista.innerHTML = "";
+
+            produtoSelecionado.caracteristicas.forEach(texto => {
+                const li = document.createElement("li");
+                li.textContent = texto;
+                lista.appendChild(li);
+            });
+
+        } else {
+            document.querySelector(".detalhes-info").innerHTML = "<p>Produto não encontrado.</p>";
+        }
+    </script>
+
+    <script>
+    let carrinho = JSON.parse(sessionStorage.getItem("carrinho")) || [];
+
+    function salvarCarrinho() {
+        sessionStorage.setItem("carrinho", JSON.stringify(carrinho));
+    }
+
+    function atualizarIconeCarrinho() {
+        const span = document.getElementById("quantidade-carrinho");
+        if (span) span.textContent = carrinho.length;
+    }
+
+    if (produtoSelecionado) {
+        document.querySelector(".botao-comprar").addEventListener("click", function (e) {
+            e.preventDefault();
+
+            carrinho.push({
+                id: produtoID,
+                nome: produtoSelecionado.nome,
+                preco: produtoSelecionado.preco,
+                imagem: produtoSelecionado.imagem
+            });
+
+            salvarCarrinho();
+            atualizarIconeCarrinho();
+
+            // Não abre carrinho, não sai da página
+            alert("Produto adicionado ao carrinho!");
+        });
+    }
+
+    atualizarIconeCarrinho();
+</script>
